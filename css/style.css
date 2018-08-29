@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Marck Script', Arial, Verdana, sans-serif;
+  font-size: 20px;
+}
+
+.toDoList {
+  padding: 30px;
+  max-width: 500px;
+  height: 800px;
+  margin: 40px auto;
+  background-image: url("../images/paper.png");
+  background-repeat: no-repeat;
+  color: black;
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  padding: 5px;
+}
+
+button {
+  margin: 15px;
+  padding: 5px;
+  background: transparent;
+  color: black;
+  box-shadow: none;
+  width: 60px;
+  font-family: 'Marck Script', Arial, Verdana, sans-serif;
+  font-size: 18px;
+}
+
+h1 {
+  padding: 20px;
+}
+
+input {
+  background: transparent;
+  font-family: 'Marck Script', Arial, Verdana, sans-serif;
+  font-size: 18px;
+}
