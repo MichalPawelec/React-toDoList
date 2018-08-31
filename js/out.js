@@ -161,78 +161,139 @@ document.addEventListener('DOMContentLoaded', function () {
         return ToDoTask;
     }(_react2.default.Component);
 
-    ;
+    var Clock = function (_React$Component2) {
+        _inherits(Clock, _React$Component2);
 
-    var ToDoList = function (_React$Component2) {
-        _inherits(ToDoList, _React$Component2);
+        function Clock(props) {
+            _classCallCheck(this, Clock);
+
+            var _this2 = _possibleConstructorReturn(this, (Clock.__proto__ || Object.getPrototypeOf(Clock)).call(this, props));
+
+            _this2.state = {
+                time: new Date().toLocaleString('pl-PL', { hour: 'numeric', minute: 'numeric', second: 'numeric' })
+            };
+            return _this2;
+        }
+
+        _createClass(Clock, [{
+            key: 'componentDidMount',
+            value: function componentDidMount() {
+                var _this3 = this;
+
+                this.intervalID = setInterval(function () {
+                    return _this3.count();
+                }, 1000);
+            }
+        }, {
+            key: 'count',
+            value: function count() {
+                this.setState({
+                    time: new Date().toLocaleString('pl-PL', { hour: 'numeric', minute: 'numeric', second: 'numeric' })
+                });
+            }
+        }, {
+            key: 'componentWillUnmount',
+            value: function componentWillUnmount() {
+                clearInterval(this.intervalID);
+            }
+        }, {
+            key: 'render',
+            value: function render() {
+                return _react2.default.createElement(
+                    'p',
+                    null,
+                    this.state.time
+                );
+            }
+        }]);
+
+        return Clock;
+    }(_react2.default.Component);
+
+    var ToDoList = function (_React$Component3) {
+        _inherits(ToDoList, _React$Component3);
 
         function ToDoList(props) {
             _classCallCheck(this, ToDoList);
 
-            var _this2 = _possibleConstructorReturn(this, (ToDoList.__proto__ || Object.getPrototypeOf(ToDoList)).call(this, props));
+            var _this4 = _possibleConstructorReturn(this, (ToDoList.__proto__ || Object.getPrototypeOf(ToDoList)).call(this, props));
 
-            _this2.handleTaskIsDone = function (taskTxt) {
-                var curTasks = _this2.state.tasks.filter(function (task) {
+            _this4.handleTaskIsDone = function (taskTxt) {
+                var curTasks = _this4.state.tasks.filter(function (task) {
                     return task !== taskTxt;
                 });
-                _this2.setState({
+                _this4.setState({
                     tasks: curTasks
                 });
             };
 
-            _this2.handleAddNewText = function (event) {
-                _this2.setState({
+            _this4.handleAddNewText = function (event) {
+                _this4.setState({
                     text: event.target.value
                 });
             };
 
-            _this2.handleAddNewTask = function (event) {
+            _this4.handleAddNewTask = function (event) {
                 event.preventDefault();
-                _this2.setState({
-                    tasks: [].concat(_toConsumableArray(_this2.state.tasks), [_this2.state.text]),
+                _this4.setState({
+                    tasks: [].concat(_toConsumableArray(_this4.state.tasks), [_this4.state.text]),
                     text: ''
                 });
             };
 
-            _this2.state = {
-                tasks: [].concat(_toConsumableArray(_this2.props.startTasks)),
-                startTasks: _this2.props.startTasks,
+            _this4.state = {
+                tasks: [].concat(_toConsumableArray(_this4.props.startTasks)),
+                startTasks: _this4.props.startTasks,
                 text: ''
             };
-            return _this2;
+            return _this4;
         }
 
         _createClass(ToDoList, [{
             key: 'render',
             value: function render() {
-                var _this3 = this;
+                var _this5 = this;
 
                 var tasks = this.state.tasks.map(function (task, i) {
-                    return _react2.default.createElement(ToDoTask, { taskTxt: task, key: i, done: _this3.handleTaskIsDone });
+                    return _react2.default.createElement(ToDoTask, { taskTxt: task, key: i, done: _this5.handleTaskIsDone });
                 });
 
                 return _react2.default.createElement(
                     'div',
-                    { className: 'toDoList' },
+                    { className: 'container' },
                     _react2.default.createElement(
-                        'h1',
-                        null,
-                        'Tasks to do'
-                    ),
-                    _react2.default.createElement(
-                        'form',
-                        { onSubmit: this.handleAddNewTask },
-                        _react2.default.createElement('input', { type: 'text', value: this.state.newTask, onChange: this.handleAddNewText }),
+                        'div',
+                        { className: 'toDoList' },
                         _react2.default.createElement(
-                            'button',
+                            'h1',
                             null,
-                            'add'
+                            'Tasks to complete'
+                        ),
+                        _react2.default.createElement(
+                            'form',
+                            { onSubmit: this.handleAddNewTask },
+                            _react2.default.createElement('input', { type: 'text', value: this.state.newTask, onChange: this.handleAddNewText }),
+                            _react2.default.createElement(
+                                'button',
+                                null,
+                                'add'
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'ul',
+                            null,
+                            tasks
                         )
                     ),
                     _react2.default.createElement(
-                        'ul',
+                        'div',
                         null,
-                        tasks
+                        _react2.default.createElement('img', { src: 'images/pen.png', className: 'pen' })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'clock' },
+                        _react2.default.createElement(Clock, null)
                     )
                 );
             }
@@ -241,9 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return ToDoList;
     }(_react2.default.Component);
 
-    ;
-
-    var startTasks = ['Do shopping', 'Cook a dinner', 'Feed my cat'];
+    var startTasks = ['Go shopping', 'Cook a dinner', 'Feed my cat'];
 
     _reactDom2.default.render(_react2.default.createElement(ToDoList, { startTasks: startTasks }), document.getElementById('app'));
 });
