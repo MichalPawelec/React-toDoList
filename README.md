@@ -1,6 +1,6 @@
 # To Do List in React JS
 
-> A simple app to add and remove tasks to your schedule.
+> A simple and minimalistic app to add and remove tasks to your schedule.
 
 You can use the app here: https://michalpawelec.github.io/React-toDoList/
 
@@ -9,4 +9,5 @@ You can use the app here: https://michalpawelec.github.io/React-toDoList/
 * HTML5
 * JavaScript
 * React
+* RWD
 * Webpack
