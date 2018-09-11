@@ -4,6 +4,8 @@
 
 You can use the app here: https://michalpawelec.github.io/React-toDoList/
 
+![How it looks](./images/screen.png)
+
 ## Used technologies and tools:
 * CSS3
 * HTML5
